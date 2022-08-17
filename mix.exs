@@ -55,7 +55,7 @@ defmodule Tesla.Mixfile do
       {:mime, "~> 1.0 or ~> 2.0"},
 
       # http clients
-      {:ibrowse, "4.4.0", optional: true},
+      {:ibrowse, "~> 4.4", optional: true},
       {:hackney, "~> 1.6", optional: true},
       {:gun, "~> 1.3", optional: true},
       {:finch, "~> 0.13", optional: true},
@@ -74,17 +74,15 @@ defmodule Tesla.Mixfile do
       {:fuse, "~> 2.4", optional: true},
       {:telemetry, "~> 0.4 or ~> 1.0", optional: true},
 
-      # testing & docs
-      {:excoveralls, "~> 0.8", only: :test},
+      # devtools
+      {:excoveralls, ">= 0.0.0", only: :test, runtime: false},
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
+      {:mix_test_watch, ">= 0.0.0", only: :dev},
+      {:dialyxir, ">= 0.0.0", only: [:dev, :test], runtime: false},
+      {:inch_ex, ">= 0.0.0", only: :docs},
       {:httparrot, "~> 1.3", only: :test},
-      {:ex_doc, "~> 0.21", only: :dev, runtime: false},
-      {:mix_test_watch, "~> 1.0", only: :dev},
-      {:dialyxir, "~> 1.0", only: [:dev, :test], runtime: false},
-      {:inch_ex, "~> 2.0", only: :docs},
-
-      # override httparrot dependencies
       {:cowlib, "~> 2.9", only: :test, override: true},
-      {:ranch, "~> 1.8", only: :test, override: true}
+      {:ranch, "~> 2.1", only: :test, override: true}
     ]
   end
 
